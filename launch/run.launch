@@ -8,6 +8,9 @@
     <!--- LOAM -->
     <include file="$(find lio_sam)/launch/include/module_loam.launch" />
 
+    <!-- Static TF -->
+    <node pkg="tf" type="static_transform_publisher" name="map_to_odom"  args="0 0 1.2222 0 0 0 /map /odom 10" />
+
     <!--- Robot State TF -->
     <include file="$(find lio_sam)/launch/include/module_robot_state_publisher.launch" />
 
