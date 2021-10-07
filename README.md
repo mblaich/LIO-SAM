@@ -53,19 +53,23 @@ We design a system that maintains two graphs and runs up to 10x faster than real
 
 ## Dependency
 
-This is the original ROS1 implementation of LIO-SAM. For a ROS2 implementation see branch `ros2`.
+This is the original ROS1 implementation of LIO-SAM. For a ROS2 implementation see branch `ros2`. The gtsam package also requieres the boost libraries.
 
-- [ROS](http://wiki.ros.org/ROS/Installation) (tested with Kinetic and Melodic)
+- [ROS](http://wiki.ros.org/ROS/Installation) (tested with Noetic)
   ```
-  sudo apt-get install -y ros-kinetic-navigation
-  sudo apt-get install -y ros-kinetic-robot-localization
-  sudo apt-get install -y ros-kinetic-robot-state-publisher
+  sudo apt-get install -y ros-noetic-navigation
+  sudo apt-get install -y ros-noetic-robot-localization
+  sudo apt-get install -y ros-noetic-robot-state-publisher
   ```
-- [gtsam](https://github.com/borglab/gtsam/releases) (Georgia Tech Smoothing and Mapping library)
+- [gtsam](https://github.com/borglab/gtsam/releases)
+Z(Georgia Tech Smoothing and Mapping library),
+the gtsam package also requieres the boost libraries.
   ```
-  wget -O ~/Downloads/gtsam.zip https://github.com/borglab/gtsam/archive/4.0.2.zip
-  cd ~/Downloads/ && unzip gtsam.zip -d ~/Downloads/
-  cd ~/Downloads/gtsam-4.0.2/
+  sudo apt-get install libboost-all-dev
+  cd ~
+  mkdir dev
+  cd dev
+  git clone -b 4.1rc https://github.com/borglab/gtsam.git 
   mkdir build && cd build
   cmake -DGTSAM_BUILD_WITH_MARCH_NATIVE=OFF ..
   sudo make install -j8
